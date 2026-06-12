@@ -8,26 +8,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=DM+Sans:wght@400;500;600&display=swap');
 *{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --space:#050a18;
-  --space-mid:#0a1428;
-  --card:#ffffff;
-  --card2:#f4f7ff;
-  --border:#dde4f5;
-  --navy:#0f1e5c;
-  --blue:#1d4ed8;
-  --blue-light:#eff4ff;
-  --amber:#d97706;
-  --amber-bg:#fffbeb;
-  --amber-border:#fcd34d;
-  --green:#047857;
-  --green-bg:#ecfdf5;
-  --green-border:#6ee7b7;
-  --red:#dc2626;
-  --muted:#6b7db3;
-  --text:#0f1e5c;
+  --space:#050a18;--card:#ffffff;--card2:#f4f7ff;--border:#dde4f5;
+  --navy:#0f1e5c;--blue:#1d4ed8;--amber:#d97706;--amber-bg:#fffbeb;
+  --amber-border:#fcd34d;--green:#047857;--green-bg:#ecfdf5;
+  --green-border:#6ee7b7;--red:#dc2626;--muted:#6b7db3;--text:#0f1e5c;
 }
 body{font-family:'DM Sans',sans-serif;background:var(--space);color:var(--text);min-height:100vh;overflow-x:hidden}
-
 .starfield{position:fixed;inset:0;pointer-events:none;z-index:0}
 .star{position:absolute;background:#fff;border-radius:50%;animation:tw var(--d,3s) infinite ease-in-out var(--dl,0s)}
 @keyframes tw{0%,100%{opacity:.1}50%{opacity:.85}}
@@ -35,29 +21,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--space);color:var(--text);
 .neb1{width:600px;height:400px;background:#3b0764;top:-100px;left:-100px}
 .neb2{width:500px;height:350px;background:#1e3a8a;top:40%;right:-80px}
 .neb3{width:400px;height:300px;background:#064e3b;bottom:10%;left:20%}
-
 .page{position:relative;z-index:2;max-width:920px;margin:0 auto;padding:1.5rem 1rem 4rem}
-
-/* SETUP BANNER */
-.setup-banner{background:#fff;border:2px solid #f59e0b;border-radius:16px;padding:1.4rem 1.6rem;margin-bottom:1.4rem;box-shadow:0 8px 32px rgba(0,0,0,.25)}
-.setup-banner h2{font-family:'Orbitron',sans-serif;font-size:.75rem;letter-spacing:.15em;color:#b45309;margin-bottom:.8rem;font-weight:700}
-.setup-steps{counter-reset:step}
-.setup-step{counter-increment:step;display:flex;gap:.75rem;align-items:flex-start;margin-bottom:.7rem;font-size:.88rem;color:#374151;line-height:1.5}
-.setup-step::before{content:counter(step);background:#f59e0b;color:#fff;font-family:'Orbitron',sans-serif;font-size:.6rem;font-weight:700;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:.1rem}
-.setup-step code{background:#f1f5f9;border:1px solid #e2e8f0;border-radius:5px;padding:.1rem .45rem;font-size:.82rem;color:#1e40af;font-family:monospace;word-break:break-all}
-.sql-block{background:#0f172a;color:#7dd3fc;font-family:monospace;font-size:.78rem;border-radius:10px;padding:1rem 1.1rem;margin:.5rem 0;line-height:1.7;border:1px solid rgba(125,211,252,.2);white-space:pre-wrap;word-break:break-all}
-.config-inputs{display:flex;flex-direction:column;gap:.55rem;margin-top:.9rem}
-.config-row{display:flex;flex-direction:column;gap:.25rem}
-.config-label{font-size:.72rem;font-weight:600;color:#374151;letter-spacing:.04em;font-family:'Orbitron',sans-serif}
-.config-input{background:#f8fafc;border:1.5px solid #cbd5e1;border-radius:8px;padding:.55rem .85rem;font-family:monospace;font-size:.82rem;color:#0f172a;outline:none;transition:all .2s;width:100%}
-.config-input:focus{border-color:#1d4ed8;box-shadow:0 0 0 3px rgba(29,78,216,.1);background:#fff}
-.config-input::placeholder{color:#94a3b8;font-family:'DM Sans',sans-serif}
-.btn-connect{background:#1d4ed8;color:#fff;padding:.65rem 1.5rem;border-radius:10px;font-family:'Orbitron',sans-serif;font-size:.65rem;font-weight:700;cursor:pointer;border:none;letter-spacing:.06em;transition:all .15s;margin-top:.7rem;width:100%}
-.btn-connect:hover{background:#1e40af;box-shadow:0 4px 16px rgba(29,78,216,.4);transform:translateY(-1px)}
-.btn-connect:disabled{opacity:.4;cursor:default;transform:none}
-.setup-note{font-size:.78rem;color:#6b7280;margin-top:.6rem;line-height:1.5}
-.setup-note a{color:#1d4ed8;text-decoration:none}
-.setup-note a:hover{text-decoration:underline}
 
 /* HEADER */
 .header{text-align:center;padding:2.5rem 1rem 2rem}
@@ -66,8 +30,8 @@ body{font-family:'DM Sans',sans-serif;background:var(--space);color:var(--text);
 .title span{color:#fbbf24;text-shadow:0 0 30px rgba(251,191,36,.4)}
 .tagline{color:#64748b;font-size:.82rem;margin-top:.6rem;letter-spacing:.02em}
 
-/* SYNC */
-.sync-bar{display:flex;align-items:center;justify-content:center;gap:.6rem;margin-bottom:1rem;font-family:'Orbitron',sans-serif;font-size:.58rem;letter-spacing:.05em;color:#475569}
+/* SYNC BAR */
+.sync-bar{display:flex;align-items:center;justify-content:center;gap:.6rem;margin-bottom:1rem;font-family:'Orbitron',sans-serif;font-size:.58rem;letter-spacing:.05em;color:#475569;flex-wrap:wrap}
 .sync-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
 .sync-dot.ok{background:#10b981;box-shadow:0 0 8px rgba(16,185,129,.6);animation:pulse 2s infinite}
 .sync-dot.err{background:#ef4444}
@@ -75,6 +39,19 @@ body{font-family:'DM Sans',sans-serif;background:var(--space);color:var(--text);
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
 .refresh-btn{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);color:#94a3b8;padding:.25rem .7rem;border-radius:6px;font-family:'Orbitron',sans-serif;font-size:.55rem;cursor:pointer;letter-spacing:.05em;transition:all .15s}
 .refresh-btn:hover{border-color:#7dd3fc;color:#7dd3fc}
+
+/* SPRINT LENGTH */
+.sprint-config{background:rgba(255,255,255,.04);border:1px solid rgba(125,211,252,.18);border-radius:14px;padding:.9rem 1.2rem;margin-bottom:1.2rem;display:flex;align-items:center;gap:1rem;flex-wrap:wrap;justify-content:center}
+.sprint-config-label{font-family:'Orbitron',sans-serif;font-size:.58rem;letter-spacing:.15em;color:#7dd3fc;font-weight:700}
+.sprint-days-row{display:flex;align-items:center;gap:.5rem}
+.days-btn{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);color:#e2e8f0;width:28px;height:28px;border-radius:7px;font-size:1rem;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .15s;line-height:1}
+.days-btn:hover{border-color:#7dd3fc;color:#7dd3fc;background:rgba(125,211,252,.1)}
+.days-btn:disabled{opacity:.25;cursor:default}
+.days-input{background:#0a1428;border:1.5px solid rgba(125,211,252,.3);border-radius:8px;color:#fbbf24;font-family:'Orbitron',monospace;font-size:1rem;font-weight:700;width:52px;text-align:center;padding:.2rem .3rem;outline:none;transition:all .2s}
+.days-input:focus{border-color:#7dd3fc;box-shadow:0 0 0 3px rgba(125,211,252,.15)}
+.btn-apply{background:#1d4ed8;color:#fff;padding:.35rem .9rem;border-radius:8px;font-family:'Orbitron',sans-serif;font-size:.58rem;font-weight:700;cursor:pointer;border:none;letter-spacing:.06em;transition:all .15s}
+.btn-apply:hover{background:#1e40af;transform:translateY(-1px)}
+.sprint-note{font-size:.72rem;color:#475569;font-family:'DM Sans',sans-serif}
 
 /* DAY NAV */
 .day-nav{display:flex;align-items:center;justify-content:center;gap:.75rem;margin-bottom:1.4rem}
@@ -109,9 +86,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--space);color:var(--text);
 .card{background:var(--card);border:1.5px solid var(--border);border-radius:16px;padding:1.2rem;box-shadow:0 4px 20px rgba(0,0,0,.2)}
 .card-tag{font-family:'Orbitron',sans-serif;font-size:.55rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:.7rem;font-weight:700}
 .fraction{font-family:'Orbitron',monospace;font-size:2rem;font-weight:700;margin-bottom:.55rem;letter-spacing:.02em}
-.fraction .done{color:var(--green)}
-.fraction .sep{color:var(--border)}
-.fraction .tot{color:#94a3b8}
+.fraction .done{color:var(--green)}.fraction .sep{color:var(--border)}.fraction .tot{color:#94a3b8}
 .bar-wrap{height:10px;background:#eef2ff;border-radius:5px;overflow:hidden;margin-bottom:.5rem;border:1px solid var(--border)}
 .bar{height:100%;border-radius:5px;background:linear-gradient(90deg,#047857,#10b981);transition:width .7s cubic-bezier(.4,0,.2,1);width:0%}
 .bar.warn{background:linear-gradient(90deg,#d97706,#fbbf24)}
@@ -160,17 +135,12 @@ body{font-family:'DM Sans',sans-serif;background:var(--space);color:var(--text);
 .toast-title{font-family:'Orbitron',monospace;font-size:.9rem;font-weight:900;color:#b45309;margin-bottom:.3rem;letter-spacing:.06em}
 .toast-sub{font-size:.82rem;color:#64748b;font-family:'DM Sans',sans-serif}
 #confetti{position:fixed;inset:0;pointer-events:none;z-index:998}
-
-.main-content{display:none}
 </style>
 </head>
 <body>
 <div class="starfield" id="stars"></div>
-<div class="nebula neb1"></div>
-<div class="nebula neb2"></div>
-<div class="nebula neb3"></div>
+<div class="nebula neb1"></div><div class="nebula neb2"></div><div class="nebula neb3"></div>
 <canvas id="confetti"></canvas>
-
 <div class="toast" id="toast">
   <div class="toast-icon" id="t-icon">🛰</div>
   <div class="toast-title" id="t-title">Checkpoint reached!</div>
@@ -178,261 +148,178 @@ body{font-family:'DM Sans',sans-serif;background:var(--space);color:var(--text);
 </div>
 
 <div class="page">
+  <div class="header">
+    <div class="mission-tag" id="mission-tag">Mission Control · Sprint</div>
+    <div class="title">PROJECT <span>VERTICAL</span></div>
+    <div class="tagline" id="tagline">Subtotals live in production</div>
+  </div>
 
-  <!-- SETUP PANEL -->
-  <div id="setup-panel">
-    <div class="header">
-      <div class="mission-tag">Mission Control · 10-Day Sprint</div>
-      <div class="title">PROJECT <span>VERTICAL</span></div>
-      <div class="tagline">One-time setup — takes about 5 minutes</div>
+  <div class="sync-bar">
+    <div class="sync-dot loading" id="sync-dot"></div>
+    <span id="sync-label">Connecting to Mission Control...</span>
+    <button class="refresh-btn" onclick="loadData()">↻ REFRESH</button>
+  </div>
+
+  <!-- SPRINT LENGTH CONTROL -->
+  <div class="sprint-config">
+    <span class="sprint-config-label">SPRINT LENGTH</span>
+    <div class="sprint-days-row">
+      <button class="days-btn" id="days-minus" onclick="adjustDays(-1)">−</button>
+      <input class="days-input" id="days-input" type="number" min="1" max="90" value="10" onchange="daysInputChanged()"/>
+      <button class="days-btn" id="days-plus" onclick="adjustDays(1)">+</button>
+      <span style="color:#7dd3fc;font-family:'Orbitron',sans-serif;font-size:.58rem;letter-spacing:.1em">DAYS</span>
     </div>
+    <button class="btn-apply" onclick="applyDays()">APPLY</button>
+    <span class="sprint-note">Existing day data is preserved when you change the length</span>
+  </div>
 
-    <div class="setup-banner">
-      <h2>🛰 CONNECT TO MISSION CONTROL (SUPABASE)</h2>
-      <div class="setup-steps">
+  <div class="day-nav">
+    <button class="nav-btn" id="prev-btn" onclick="prevDay()">← PREV</button>
+    <span class="day-label" id="day-label">DAY 1</span>
+    <button class="nav-btn" id="next-btn" onclick="nextDay()">NEXT →</button>
+  </div>
 
-        <div class="setup-step">
-          Go to <a href="https://supabase.com" target="_blank" style="color:#1d4ed8">supabase.com</a>, sign up free, and create a new project. Name it anything (e.g. <code>project-vertical</code>). Wait ~2 mins for it to spin up.
-        </div>
+  <div class="objective-banner">
+    <div class="obj-label">🎯 Today's Mission Objective</div>
+    <div class="obj-display empty" id="obj-display">No objective set — type it below and hit Set Objective</div>
+    <div class="obj-edit-row" id="obj-edit-row">
+      <input class="obj-input" type="text" id="obj-input" placeholder="What does the team need to achieve today?"/>
+      <button class="btn-set" id="obj-btn" onclick="setObjective()">SET OBJECTIVE</button>
+    </div>
+    <button class="btn-edit" id="obj-change-btn" onclick="showObjEdit()" style="display:none">✏️ CHANGE OBJECTIVE</button>
+  </div>
 
-        <div class="setup-step">
-          In your project, go to <strong>SQL Editor</strong> (left sidebar) and run this query to create the data table:
-          <div class="sql-block">CREATE TABLE sprint_data (
-  id TEXT PRIMARY KEY DEFAULT 'main',
-  data JSONB NOT NULL,
-  updated_at TIMESTAMPTZ DEFAULT NOW()
-);
+  <div class="orbit-wrap">
+    <div class="orbit-inner">
+      <svg class="orbit-svg" viewBox="0 0 860 145" preserveAspectRatio="none">
+        <defs>
+          <marker id="arr" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+            <path d="M0,0 L6,3 L0,6 Z" fill="rgba(125,211,252,0.5)"/>
+          </marker>
+          <filter id="glow">
+            <feGaussianBlur stdDeviation="2.5" result="coloredBlur"/>
+            <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+        </defs>
+        <path d="M 40,112 Q 220,18 430,72 Q 640,122 820,26" fill="none" stroke="rgba(125,211,252,0.2)" stroke-width="1.5" stroke-dasharray="6 5" marker-end="url(#arr)"/>
+        <g id="orbit-dots"></g>
+        <text id="rocket" x="40" y="112" font-size="26" text-anchor="middle" dominant-baseline="middle" style="transition:all 1.4s cubic-bezier(.34,1.2,.64,1)" filter="url(#glow)">🚀</text>
+        <text x="30" y="128" font-size="22" text-anchor="middle" opacity=".9">🌍</text>
+        <text x="830" y="26" font-size="22" text-anchor="middle" dominant-baseline="middle">🛸</text>
+        <text id="alt-text" x="430" y="14" font-family="'Orbitron',monospace" font-size="10" fill="rgba(125,211,252,0.7)" text-anchor="middle" letter-spacing="2">DAY 1</text>
+      </svg>
+    </div>
+  </div>
 
-INSERT INTO sprint_data (id, data)
-VALUES ('main', '[]'::jsonb);
-
--- Allow public read/write (no auth needed)
-ALTER TABLE sprint_data ENABLE ROW LEVEL SECURITY;
-CREATE POLICY "Public access" ON sprint_data
-  FOR ALL USING (true) WITH CHECK (true);</div>
-        </div>
-
-        <div class="setup-step">
-          Go to <strong>Project Settings → API</strong> (left sidebar). Copy your <strong>Project URL</strong> and <strong>anon public</strong> key, and paste them below.
-        </div>
-
-        <div class="setup-step">
-          Paste your credentials below and click Connect. This is saved in your browser — your team just needs the URL, no setup required on their end.
-        </div>
-
-      </div>
-
-      <div class="config-inputs">
-        <div class="config-row">
-          <div class="config-label">SUPABASE PROJECT URL</div>
-          <input class="config-input" id="sb-url" type="url" placeholder="https://xxxxxxxxxxxx.supabase.co" />
-        </div>
-        <div class="config-row">
-          <div class="config-label">SUPABASE ANON KEY</div>
-          <input class="config-input" id="sb-key" type="text" placeholder="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." />
-        </div>
-        <button class="btn-connect" id="connect-btn" onclick="connectSupabase()">⚡ CONNECT MISSION CONTROL</button>
-        <p class="setup-note">These credentials are stored only in your browser's localStorage — they never leave your machine. Share the HTML file with your team and they paste the same credentials once. Or host it anywhere (GitHub Pages, Netlify) and everyone connects automatically.</p>
+  <div class="cards">
+    <div class="card">
+      <div class="card-tag">📡 Telemetry</div>
+      <div class="fraction"><span class="done" id="f-done">0</span><span class="sep"> / </span><span class="tot" id="f-tot">—</span></div>
+      <div class="bar-wrap"><div class="bar" id="prog-bar"></div></div>
+      <div class="pct" id="pct-label">NO TASKS YET</div>
+      <div class="badge hold" id="status-badge">⏸ ON THE LAUNCHPAD</div>
+    </div>
+    <div class="card">
+      <div class="card-tag">✅ Today's Tasks — tap to tick off</div>
+      <div class="task-list" id="task-list"><div class="no-tasks">No tasks yet — add one below</div></div>
+      <div class="task-add-row">
+        <input class="task-input" type="text" id="task-input" placeholder="Add a task and press Enter..."/>
+        <button class="btn-add" id="add-btn" onclick="addTask()">+ ADD</button>
       </div>
     </div>
   </div>
 
-  <!-- MAIN APP (hidden until connected) -->
-  <div class="main-content" id="main-content">
-
-    <div class="header">
-      <div class="mission-tag">Mission Control · 10-Day Sprint</div>
-      <div class="title">PROJECT <span>VERTICAL</span></div>
-      <div class="tagline">Subtotals live in production — T-minus 10 days</div>
-    </div>
-
-    <div class="sync-bar">
-      <div class="sync-dot loading" id="sync-dot"></div>
-      <span id="sync-label">Connecting to Mission Control...</span>
-      <button class="refresh-btn" onclick="loadData()">↻ REFRESH</button>
-      <button class="refresh-btn" onclick="resetConnection()" style="margin-left:.3rem">⚙ SETTINGS</button>
-    </div>
-
-    <div class="day-nav">
-      <button class="nav-btn" id="prev-btn" onclick="prevDay()">← PREV</button>
-      <span class="day-label" id="day-label">DAY 1</span>
-      <button class="nav-btn" id="next-btn" onclick="nextDay()">NEXT →</button>
-    </div>
-
-    <div class="objective-banner">
-      <div class="obj-label">🎯 Today's Mission Objective</div>
-      <div class="obj-display empty" id="obj-display">No objective set — type it below and hit Set Objective</div>
-      <div class="obj-edit-row" id="obj-edit-row">
-        <input class="obj-input" type="text" id="obj-input" placeholder="What does the team need to achieve today?"/>
-        <button class="btn-set" id="obj-btn" onclick="setObjective()">SET OBJECTIVE</button>
-      </div>
-      <button class="btn-edit" id="obj-change-btn" onclick="showObjEdit()" style="display:none">✏️ CHANGE OBJECTIVE</button>
-    </div>
-
-    <div class="orbit-wrap">
-      <div class="orbit-inner">
-        <svg class="orbit-svg" viewBox="0 0 860 145" preserveAspectRatio="none">
-          <defs>
-            <marker id="arr" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
-              <path d="M0,0 L6,3 L0,6 Z" fill="rgba(125,211,252,0.5)"/>
-            </marker>
-            <filter id="glow">
-              <feGaussianBlur stdDeviation="2.5" result="coloredBlur"/>
-              <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
-            </filter>
-          </defs>
-          <path d="M 40,112 Q 220,18 430,72 Q 640,122 820,26" fill="none" stroke="rgba(125,211,252,0.2)" stroke-width="1.5" stroke-dasharray="6 5" marker-end="url(#arr)"/>
-          <g id="orbit-dots"></g>
-          <text id="rocket" x="40" y="112" font-size="26" text-anchor="middle" dominant-baseline="middle" style="transition:all 1.4s cubic-bezier(.34,1.2,.64,1)" filter="url(#glow)">🚀</text>
-          <text x="30" y="128" font-size="22" text-anchor="middle" opacity=".9">🌍</text>
-          <text x="830" y="26" font-size="22" text-anchor="middle" dominant-baseline="middle">🛸</text>
-          <text id="alt-text" x="430" y="14" font-family="'Orbitron',monospace" font-size="10" fill="rgba(125,211,252,0.7)" text-anchor="middle" letter-spacing="2">DAY 1 OF 10</text>
-        </svg>
-      </div>
-    </div>
-
-    <div class="cards">
-      <div class="card">
-        <div class="card-tag">📡 Telemetry</div>
-        <div class="fraction"><span class="done" id="f-done">0</span><span class="sep"> / </span><span class="tot" id="f-tot">—</span></div>
-        <div class="bar-wrap"><div class="bar" id="prog-bar"></div></div>
-        <div class="pct" id="pct-label">NO TASKS YET</div>
-        <div class="badge hold" id="status-badge">⏸ ON THE LAUNCHPAD</div>
-      </div>
-      <div class="card">
-        <div class="card-tag">✅ Today's Tasks — tap to tick off</div>
-        <div class="task-list" id="task-list">
-          <div class="no-tasks">No tasks yet — add one below</div>
-        </div>
-        <div class="task-add-row">
-          <input class="task-input" type="text" id="task-input" placeholder="Add a task and press Enter..."/>
-          <button class="btn-add" id="add-btn" onclick="addTask()">+ ADD</button>
-        </div>
-      </div>
-    </div>
-
-    <div class="map-card">
-      <div class="card-tag">🗺 Mission Map — 10 Checkpoints to Deployment</div>
-      <div class="checkpoints" id="checkpoints"></div>
-      <div class="status-text" id="ms-text">Mission underway — first checkpoint awaits.</div>
-    </div>
-
-  </div><!-- /main-content -->
-</div><!-- /page -->
+  <div class="map-card">
+    <div class="card-tag" id="map-tag">🗺 Mission Map</div>
+    <div class="checkpoints" id="checkpoints"></div>
+    <div class="status-text" id="ms-text">Mission underway — first checkpoint awaits.</div>
+  </div>
+</div>
 
 <script>
-const DAYS = 10;
-const NAMES = ["T-10: Engines Lit","T-9: Clear of Tower","T-8: Mach 1","T-7: Max-Q","T-6: Stage Sep","T-5: Half-Orbit","T-4: High Orbit","T-3: Trans-Lunar","T-2: Final Approach","T-1: DEPLOYMENT"];
-const MSGS = [
-  "Engines burning — mission is go!",
-  "Clear of the launch tower. Trajectory nominal.",
-  "Mach 1 broken. The team is flying.",
-  "Max-Q survived. Hardest part of the climb done.",
-  "Stage separation — the heavy lifting paid off.",
-  "HALFWAY. The feature is half-built and fully real.",
-  "High orbit reached. Subtotals coming into view.",
-  "Trans-lunar injection. Almost nothing between you and the target.",
-  "Final approach. One push left.",
-  "🛸 DEPLOYMENT. Subtotals are LIVE in production. Mission complete."
-];
-const ROCKET_POS=[[40,112],[120,74],[200,44],[285,30],[370,54],[430,72],[510,82],[600,62],[700,40],[820,26]];
+// ── CONFIG ───────────────────────────────────────────────────────────────────
+const SUPABASE_URL='https://oziirgoyervymlrinjrg.supabase.co';
+const SUPABASE_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im96aWlyZ295ZXJ2eW1scmluanJnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODEyNDA4OTcsImV4cCI6MjA5NjgxNjg5N30.ii1NSmGJqTB_6nKDnYdIT-Rel0pfABJThTYbpbfELuE';
 
-let day=1, saving=false;
-let data=Array.from({length:DAYS},()=>({objective:'',tasks:[]}));
-let SUPABASE_URL='https://oziirgoyervymlrinjrg.supabase.co', SUPABASE_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im96aWlyZ295ZXJ2eW1scmluanJnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODEyNDA4OTcsImV4cCI6MjA5NjgxNjg5N30.ii1NSmGJqTB_6nKDnYdIT-Rel0pfABJThTYbpbfELuE';
+// ── STATE ────────────────────────────────────────────────────────────────────
+let DAYS = 10;
+let day = 1;
+let saving = false;
+let data = Array.from({length:DAYS},()=>({objective:'',tasks:[]}));
+
+// Rocket positions for up to 90 days — computed dynamically
+function getRocketPositions(n){
+  return Array.from({length:n},(_,i)=>{
+    const t=i/(n-1||1);
+    const x=40+t*780;
+    // sine wave path matching the SVG curve
+    const y=112-Math.sin(t*Math.PI)*82+Math.sin(t*Math.PI*2)*15;
+    return [Math.round(x),Math.round(y)];
+  });
+}
 
 const hit=d=>d.tasks.length>0&&d.tasks.every(t=>t.done);
 const conquered=()=>data.filter(hit).length;
 const ts=()=>new Date().toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'});
 
-// ── SUPABASE CONNECTION ──────────────────────────────────────────────────────
-
-function connectSupabase(){
-  const url=(document.getElementById('sb-url').value||'').trim().replace(/\/$/,'');
-  const key=(document.getElementById('sb-key').value||'').trim();
-  if(!url||!key){alert('Please enter both the Project URL and anon key.');return;}
-  if(!url.startsWith('https://')){alert('Project URL should start with https://');return;}
-  localStorage.setItem('pv_sb_url',url);
-  localStorage.setItem('pv_sb_key',key);
-  SUPABASE_URL=url; SUPABASE_KEY=key;
-  showApp();
-  loadData();
-}
-
-function resetConnection(){
-  if(!confirm('Clear saved credentials and return to setup?'))return;
-  localStorage.removeItem('pv_sb_url');
-  localStorage.removeItem('pv_sb_key');
-  location.reload();
-}
-
-function showApp(){
-  document.getElementById('setup-panel').style.display='none';
-  document.getElementById('main-content').style.display='block';
-}
-
-// ── SUPABASE API CALLS ───────────────────────────────────────────────────────
-
-async function sbFetch(path, options={}){
-  const res = await fetch(`${SUPABASE_URL}/rest/v1/${path}`, {
+// ── SUPABASE ─────────────────────────────────────────────────────────────────
+async function sbFetch(path,options={}){
+  return fetch(`${SUPABASE_URL}/rest/v1/${path}`,{
     ...options,
     headers:{
-      'apikey': SUPABASE_KEY,
-      'Authorization': `Bearer ${SUPABASE_KEY}`,
-      'Content-Type': 'application/json',
-      'Prefer': options.prefer||'',
+      'apikey':SUPABASE_KEY,
+      'Authorization':`Bearer ${SUPABASE_KEY}`,
+      'Content-Type':'application/json',
       ...(options.headers||{})
     }
   });
-  return res;
 }
 
 async function loadData(){
   setSyncState('loading','Connecting to Mission Control...');
   try{
-    const res = await sbFetch('sprint_data?id=eq.main&select=data');
+    const res=await sbFetch('sprint_data?id=eq.main&select=data,days');
     if(!res.ok) throw new Error(`HTTP ${res.status}`);
-    const json = await res.json();
+    const json=await res.json();
     if(json.length===0){
-      // Row doesn't exist yet — create it
       await saveData(true);
       setSyncState('ok','Mission Control online — '+ts());
     } else {
-      const remote = json[0].data;
-      if(Array.isArray(remote) && remote.length===DAYS){
-        data=remote;
-      } else {
-        // Initialise with empty structure
-        await saveData(true);
+      const row=json[0];
+      // Restore days setting
+      if(row.days && typeof row.days==='number' && row.days>=1){
+        DAYS=row.days;
+        document.getElementById('days-input').value=DAYS;
+      }
+      // Restore data, preserving any existing days
+      if(Array.isArray(row.data)){
+        // Merge: keep existing, pad with empty if needed
+        data=mergeDays(row.data, DAYS);
       }
       setSyncState('ok','Synced — '+ts());
     }
     render();
   }catch(e){
     console.error(e);
-    setSyncState('err','Sync failed — check credentials. '+e.message);
-    // Fall back to localStorage
+    setSyncState('err','Sync failed — '+e.message);
     const l=localStorage.getItem('pv_local');
-    if(l){data=JSON.parse(l);render();}
+    if(l){const saved=JSON.parse(l);data=saved.data||data;DAYS=saved.days||DAYS;render();}
   }
 }
 
 async function saveData(force=false){
-  if(!SUPABASE_URL||!SUPABASE_KEY) return;
   if(saving&&!force) return;
   saving=true;
   setSyncState('loading','Transmitting...');
   setButtons(true);
   try{
-    // Upsert: insert if not exists, update if exists
-    const res = await sbFetch('sprint_data', {
+    const res=await sbFetch('sprint_data',{
       method:'POST',
-      prefer:'resolution=merge-duplicates',
       headers:{'Prefer':'resolution=merge-duplicates'},
-      body: JSON.stringify({id:'main', data, updated_at: new Date().toISOString()})
+      body:JSON.stringify({id:'main',data,days:DAYS,updated_at:new Date().toISOString()})
     });
     if(!res.ok) throw new Error(`HTTP ${res.status}: ${await res.text()}`);
-    localStorage.setItem('pv_local', JSON.stringify(data));
+    localStorage.setItem('pv_local',JSON.stringify({data,days:DAYS}));
     setSyncState('ok','Transmitted — '+ts());
   }catch(e){
     console.error(e);
@@ -442,8 +329,49 @@ async function saveData(force=false){
   setButtons(false);
 }
 
-// ── UI HELPERS ───────────────────────────────────────────────────────────────
+// ── DAYS MANAGEMENT ──────────────────────────────────────────────────────────
+function mergeDays(existing, newLen){
+  // Always preserve existing data; pad with empty days if growing
+  const result=[];
+  for(let i=0;i<newLen;i++){
+    result.push(existing[i]||{objective:'',tasks:[]});
+  }
+  return result;
+}
 
+function adjustDays(delta){
+  const input=document.getElementById('days-input');
+  const current=parseInt(input.value)||DAYS;
+  const next=Math.max(1,Math.min(90,current+delta));
+  input.value=next;
+}
+
+function daysInputChanged(){
+  const input=document.getElementById('days-input');
+  let v=parseInt(input.value);
+  if(isNaN(v)||v<1) v=1;
+  if(v>90) v=90;
+  input.value=v;
+}
+
+function applyDays(){
+  const v=parseInt(document.getElementById('days-input').value);
+  if(isNaN(v)||v<1||v>90){alert('Enter a number between 1 and 90.');return;}
+  if(v===DAYS) return;
+  const shrinking=v<DAYS;
+  if(shrinking){
+    const hasDataBeyond=data.slice(v).some(d=>d.objective||d.tasks.length>0);
+    if(hasDataBeyond && !confirm(`Shortening to ${v} days will hide days ${v+1}–${DAYS}. Their data is preserved and will reappear if you extend the sprint again. Continue?`)) return;
+  }
+  DAYS=v;
+  data=mergeDays(data,DAYS);
+  // Keep current day in range
+  if(day>DAYS) day=DAYS;
+  render();
+  saveData();
+}
+
+// ── UI HELPERS ───────────────────────────────────────────────────────────────
 function setSyncState(s,m){
   document.getElementById('sync-dot').className='sync-dot '+s;
   document.getElementById('sync-label').textContent=m;
@@ -451,7 +379,6 @@ function setSyncState(s,m){
 function setButtons(d){
   ['add-btn','obj-btn'].forEach(id=>{const el=document.getElementById(id);if(el)el.disabled=d;});
 }
-
 function setObjective(){
   const v=document.getElementById('obj-input').value.trim();if(!v)return;
   data[day-1].objective=v;
@@ -482,21 +409,37 @@ function deleteTask(id){
 function showToast(d){
   const t=document.getElementById('toast');
   document.getElementById('t-icon').textContent=d===DAYS?'🛸':'🛰';
-  document.getElementById('t-title').textContent=d===DAYS?'DEPLOYMENT ACHIEVED!':NAMES[d-1]+' REACHED!';
-  document.getElementById('t-sub').textContent=MSGS[d-1];
+  document.getElementById('t-title').textContent=d===DAYS?'DEPLOYMENT ACHIEVED!':'DAY '+d+' COMPLETE!';
+  document.getElementById('t-sub').textContent=d===DAYS?'Mission complete. Legends.':'Keep the engines burning — '+(DAYS-d)+' days to go.';
   t.classList.add('show');setTimeout(()=>t.classList.remove('show'),4500);
 }
+function prevDay(){if(day>1){day--;render();}}
+function nextDay(){if(day<DAYS){day++;render();}}
 
+// ── RENDER ───────────────────────────────────────────────────────────────────
 function render(){
+  const ROCKET_POS=getRocketPositions(DAYS);
   const d=data[day-1];
+
+  // Header
+  document.getElementById('mission-tag').textContent=`Mission Control · ${DAYS}-Day Sprint`;
+  document.getElementById('tagline').textContent=`Subtotals live in production — T-minus ${DAYS} days`;
+  document.getElementById('map-tag').textContent=`🗺 Mission Map — ${DAYS} Checkpoints to Deployment`;
+
+  // Day nav
   document.getElementById('day-label').textContent=`DAY ${day} OF ${DAYS}`;
   document.getElementById('prev-btn').disabled=day===1;
   document.getElementById('next-btn').disabled=day===DAYS;
+  document.getElementById('days-input').value=DAYS;
+  document.getElementById('days-minus').disabled=DAYS<=1;
+  document.getElementById('days-plus').disabled=DAYS>=90;
 
+  // Objective
   const od=document.getElementById('obj-display'),er=document.getElementById('obj-edit-row'),cb=document.getElementById('obj-change-btn');
   if(d.objective){od.textContent=d.objective;od.className='obj-display';er.style.display='none';cb.style.display='inline-flex';}
   else{od.textContent='No objective set — type it below and hit Set Objective';od.className='obj-display empty';er.style.display='flex';cb.style.display='none';}
 
+  // Telemetry
   const total=d.tasks.length,done=d.tasks.filter(t=>t.done).length;
   document.getElementById('f-done').textContent=done;
   document.getElementById('f-tot').textContent=total||'—';
@@ -509,21 +452,26 @@ function render(){
   else if(done>0){b.className='badge burn';b.textContent='🔥 ENGINES BURNING';}
   else{b.className='badge hold';b.textContent='⏸ ON THE LAUNCHPAD';}
 
+  // Tasks
   const list=document.getElementById('task-list');
   list.innerHTML=d.tasks.length
     ?d.tasks.map(t=>`<div class="task-item${t.done?' done-task':''}" onclick="toggleTask(${t.id})"><div class="task-check">${t.done?'✓':''}</div><span class="task-label">${t.label.replace(/</g,'&lt;')}</span><button class="task-delete" onclick="event.stopPropagation();deleteTask(${t.id})" title="Remove">✕</button></div>`).join('')
     :'<div class="no-tasks">No tasks yet — add one below</div>';
 
-  const c=conquered(),pos=c>0?ROCKET_POS[c-1]:ROCKET_POS[0];
+  // Orbit rocket
+  const c=conquered(),pos=c>0?ROCKET_POS[Math.min(c-1,ROCKET_POS.length-1)]:ROCKET_POS[0];
   document.getElementById('rocket').setAttribute('x',pos[0]);
   document.getElementById('rocket').setAttribute('y',pos[1]);
   document.getElementById('rocket').textContent=c===DAYS?'🛸':'🚀';
   document.getElementById('alt-text').textContent=`DAY ${day} OF ${DAYS}  ·  ${c} CHECKPOINT${c!==1?'S':''} CLEARED`;
 
+  // Orbit dots
   const dg=document.getElementById('orbit-dots');dg.innerHTML='';
   ROCKET_POS.forEach(([x,y],i)=>{
     const ci=document.createElementNS('http://www.w3.org/2000/svg','circle');
-    ci.setAttribute('cx',x);ci.setAttribute('cy',y);ci.setAttribute('r',6);
+    ci.setAttribute('cx',x);ci.setAttribute('cy',y);
+    // Shrink dots if many days so they don't overlap
+    ci.setAttribute('r',DAYS>20?3:5);
     const comp=hit(data[i]),cur=i===day-1;
     ci.setAttribute('fill',comp?'rgba(52,211,153,.9)':cur?'rgba(251,191,36,.9)':'rgba(255,255,255,.1)');
     ci.setAttribute('stroke',comp?'#6ee7b7':cur?'#fbbf24':'rgba(255,255,255,.2)');
@@ -532,23 +480,25 @@ function render(){
     ci.onclick=()=>{day=i+1;render();};dg.appendChild(ci);
   });
 
+  // Mission map
   const cp=document.getElementById('checkpoints');cp.innerHTML='';
   data.forEach((dd,i)=>{
     const el=document.createElement('div');
     const comp=hit(dd),part=!comp&&dd.tasks.some(t=>t.done);
     el.className='cp'+(comp?' complete':part?' partial':'')+(i+1===day?' today':'');
     el.innerHTML=(comp?(i===DAYS-1?'🛸':'🛰'):part?'🔥':'·')+`<span class="cp-num">${i+1}</span>`;
-    el.title=`Day ${i+1} · ${NAMES[i]}${dd.objective?' — '+dd.objective:''}`;
+    el.title=`Day ${i+1}${dd.objective?' — '+dd.objective:''}`;
     el.onclick=()=>{day=i+1;render();};cp.appendChild(el);
   });
 
   const c2=conquered();
-  document.getElementById('ms-text').innerHTML=c2===0?'Mission underway — first checkpoint awaits.':c2===DAYS?'<strong>MISSION COMPLETE.</strong> Subtotals live in production. Legends.':`<strong>${c2} of ${DAYS}</strong> checkpoints cleared — ${DAYS-c2} to deployment.`;
+  document.getElementById('ms-text').innerHTML=
+    c2===0?'Mission underway — first checkpoint awaits.':
+    c2===DAYS?'<strong>MISSION COMPLETE.</strong> Subtotals live in production. Legends.':
+    `<strong>${c2} of ${DAYS}</strong> checkpoints cleared — ${DAYS-c2} to deployment.`;
 }
 
-function prevDay(){if(day>1){day--;render();}}
-function nextDay(){if(day<DAYS){day++;render();}}
-
+// ── CONFETTI ─────────────────────────────────────────────────────────────────
 function fireConfetti(n){
   const c=document.getElementById('confetti'),ctx=c.getContext('2d');
   c.width=innerWidth;c.height=innerHeight;
@@ -563,20 +513,11 @@ function fireConfetti(n){
 
 // ── BOOT ─────────────────────────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded',()=>{
-  // Credentials hardcoded — go straight to app
-  showApp();
+  document.getElementById('obj-input').addEventListener('keydown',e=>{if(e.key==='Enter')setObjective();});
+  document.getElementById('task-input').addEventListener('keydown',e=>{if(e.key==='Enter')addTask();});
+  document.getElementById('days-input').addEventListener('keydown',e=>{if(e.key==='Enter')applyDays();});
+  setInterval(()=>loadData(),30000);
   loadData();
-
-  // Keyboard shortcuts
-  document.addEventListener('keydown',e=>{
-    const objInput=document.getElementById('obj-input');
-    const taskInput=document.getElementById('task-input');
-    if(e.target===objInput&&e.key==='Enter') setObjective();
-    if(e.target===taskInput&&e.key==='Enter') addTask();
-  });
-
-  // Auto-refresh every 30s to pick up other people's changes
-  setInterval(()=>{if(SUPABASE_URL&&SUPABASE_KEY)loadData();},30000);
 });
 </script>
 </body>
