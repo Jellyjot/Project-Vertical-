@@ -5,108 +5,151 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Project Vertical — Mission Control</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=DM+Sans:wght@400;500;600&display=swap');
 *{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --bg:#07090f;--surface:#0e1220;--surface2:#141827;--border:#1e2540;
-  --blue:#4a9eff;--blue-dim:rgba(74,158,255,0.1);--blue-mid:rgba(74,158,255,0.35);
-  --amber:#ffb830;--amber-dim:rgba(255,184,48,0.1);
-  --green:#3ddba0;--green-dim:rgba(61,219,160,0.1);--green-mid:rgba(61,219,160,0.3);
-  --red:#ff5266;--muted:#5a6490;--mid:#8d97c4;--text:#e8edf8;
+  --space:#050a18;
+  --space-mid:#0a1428;
+  --card:#ffffff;
+  --card2:#f4f7ff;
+  --border:#dde4f5;
+  --navy:#0f1e5c;
+  --blue:#1d4ed8;
+  --blue-light:#eff4ff;
+  --amber:#d97706;
+  --amber-bg:#fffbeb;
+  --amber-border:#fcd34d;
+  --green:#047857;
+  --green-bg:#ecfdf5;
+  --green-border:#6ee7b7;
+  --red:#dc2626;
+  --muted:#6b7db3;
+  --text:#0f1e5c;
 }
-body{font-family:'Space Grotesk',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;padding:0}
-.page{max-width:900px;margin:0 auto;padding:1.5rem 1rem 3rem}
-.starfield{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+body{font-family:'DM Sans',sans-serif;background:var(--space);color:var(--text);min-height:100vh;overflow-x:hidden}
+
+/* STARFIELD */
+.starfield{position:fixed;inset:0;pointer-events:none;z-index:0}
 .star{position:absolute;background:#fff;border-radius:50%;animation:tw var(--d,3s) infinite ease-in-out var(--dl,0s)}
-@keyframes tw{0%,100%{opacity:.15}50%{opacity:.8}}
-.header{position:relative;z-index:2;text-align:center;padding:1.5rem 0 1rem}
-.mission-tag{font-family:'Space Mono',monospace;font-size:.62rem;letter-spacing:.35em;color:var(--blue);text-transform:uppercase;margin-bottom:.5rem}
-.title{font-size:clamp(1.8rem,5vw,2.6rem);font-weight:700;letter-spacing:-.02em;line-height:1}
-.title span{color:var(--amber)}
-.tagline{color:var(--muted);font-size:.82rem;margin-top:.4rem}
-.sync-bar{position:relative;z-index:2;display:flex;align-items:center;justify-content:center;gap:.6rem;margin-bottom:1rem;font-family:'Space Mono',monospace;font-size:.65rem;color:var(--muted)}
-.sync-dot{width:7px;height:7px;border-radius:50%;background:var(--muted);flex-shrink:0}
-.sync-dot.ok{background:var(--green);box-shadow:0 0 6px rgba(61,219,160,.5);animation:pulse 2s infinite}
-.sync-dot.err{background:var(--red)}
-.sync-dot.loading{background:var(--amber);animation:pulse 1s infinite}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
-.day-nav{position:relative;z-index:2;display:flex;align-items:center;justify-content:center;gap:.75rem;margin-bottom:1.25rem}
-.nav-btn{background:var(--surface);border:1px solid var(--border);color:var(--mid);border-radius:9px;padding:.45rem .9rem;font-family:'Space Grotesk',sans-serif;font-size:.85rem;font-weight:600;cursor:pointer;transition:all .15s}
-.nav-btn:hover{border-color:var(--blue);color:var(--blue)}
-.nav-btn:disabled{opacity:.3;cursor:default}
-.day-label{font-family:'Space Mono',monospace;font-size:.85rem;color:var(--text);min-width:70px;text-align:center}
-.orbit-wrap{position:relative;z-index:2;background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:1rem;margin-bottom:1.1rem;overflow:hidden}
-.orbit-inner{position:relative;height:140px}
+@keyframes tw{0%,100%{opacity:.1}50%{opacity:.85}}
+/* nebula glow */
+.nebula{position:fixed;pointer-events:none;z-index:0;border-radius:50%;filter:blur(80px);opacity:.18}
+.neb1{width:600px;height:400px;background:#3b0764;top:-100px;left:-100px}
+.neb2{width:500px;height:350px;background:#1e3a8a;top:40%;right:-80px}
+.neb3{width:400px;height:300px;background:#064e3b;bottom:10%;left:20%}
+
+.page{position:relative;z-index:2;max-width:920px;margin:0 auto;padding:1.5rem 1rem 4rem}
+
+/* HEADER */
+.header{text-align:center;padding:2.5rem 1rem 2rem}
+.mission-tag{font-family:'Orbitron',monospace;font-size:.58rem;letter-spacing:.4em;color:#7dd3fc;text-transform:uppercase;margin-bottom:.7rem}
+.title{font-family:'Orbitron',monospace;font-size:clamp(1.6rem,5vw,3rem);font-weight:900;letter-spacing:.05em;line-height:1;color:#fff;text-shadow:0 0 40px rgba(147,197,253,.3)}
+.title span{color:#fbbf24;text-shadow:0 0 30px rgba(251,191,36,.4)}
+.tagline{color:#64748b;font-size:.82rem;margin-top:.6rem;letter-spacing:.02em}
+
+/* SYNC */
+.sync-bar{display:flex;align-items:center;justify-content:center;gap:.6rem;margin-bottom:1rem;font-family:'Orbitron',sans-serif;font-size:.58rem;letter-spacing:.05em;color:#475569}
+.sync-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+.sync-dot.ok{background:#10b981;box-shadow:0 0 8px rgba(16,185,129,.6);animation:pulse 2s infinite}
+.sync-dot.err{background:#ef4444}
+.sync-dot.loading{background:#f59e0b;animation:pulse .9s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+.refresh-btn{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);color:#94a3b8;padding:.25rem .7rem;border-radius:6px;font-family:'Orbitron',sans-serif;font-size:.55rem;cursor:pointer;letter-spacing:.05em;transition:all .15s}
+.refresh-btn:hover{border-color:#7dd3fc;color:#7dd3fc}
+
+/* DAY NAV */
+.day-nav{display:flex;align-items:center;justify-content:center;gap:.75rem;margin-bottom:1.4rem}
+.nav-btn{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);color:#94a3b8;border-radius:10px;padding:.5rem 1.1rem;font-family:'Orbitron',sans-serif;font-size:.62rem;font-weight:700;cursor:pointer;letter-spacing:.06em;transition:all .15s}
+.nav-btn:hover{border-color:#7dd3fc;color:#7dd3fc;background:rgba(125,211,252,.06)}
+.nav-btn:disabled{opacity:.25;cursor:default}
+.day-label{font-family:'Orbitron',monospace;font-size:.75rem;color:#e2e8f0;min-width:90px;text-align:center;font-weight:700;letter-spacing:.08em}
+
+/* OBJECTIVE */
+.objective-banner{background:var(--card);border-radius:18px;padding:1.4rem 1.6rem;margin-bottom:1rem;border:2px solid #1d4ed8;box-shadow:0 0 0 4px rgba(29,78,216,.08),0 8px 32px rgba(0,0,0,.25)}
+.obj-label{font-family:'Orbitron',sans-serif;font-size:.58rem;letter-spacing:.25em;text-transform:uppercase;color:var(--blue);margin-bottom:.6rem;font-weight:700}
+.obj-display{font-family:'DM Sans',sans-serif;font-size:1.15rem;font-weight:600;color:var(--navy);line-height:1.45;min-height:1.7rem}
+.obj-display.empty{color:#94a3b8;font-weight:400;font-style:italic;font-size:.95rem}
+.obj-edit-row{display:flex;gap:.6rem;margin-top:.9rem;align-items:center;flex-wrap:wrap}
+.obj-input{flex:1;min-width:200px;background:#f0f5ff;border:2px solid #c7d7fd;border-radius:10px;padding:.6rem .9rem;color:var(--navy);font-family:'DM Sans',sans-serif;font-size:.92rem;outline:none;transition:all .2s}
+.obj-input:focus{border-color:var(--blue);background:#fff;box-shadow:0 0 0 3px rgba(29,78,216,.1)}
+.obj-input::placeholder{color:#94a3b8}
+.btn-set{background:var(--blue);color:#fff;padding:.6rem 1.3rem;border-radius:10px;font-family:'Orbitron',sans-serif;font-size:.62rem;font-weight:700;cursor:pointer;border:none;letter-spacing:.06em;transition:all .15s}
+.btn-set:hover{background:#1e40af;box-shadow:0 4px 16px rgba(29,78,216,.4);transform:translateY(-1px)}
+.btn-set:disabled{opacity:.4;cursor:default;transform:none}
+.btn-edit{background:transparent;border:1.5px solid var(--border);color:var(--muted);padding:.38rem .85rem;border-radius:8px;font-family:'Orbitron',sans-serif;font-size:.55rem;font-weight:700;cursor:pointer;letter-spacing:.06em;transition:all .15s;margin-top:.6rem}
+.btn-edit:hover{border-color:var(--blue);color:var(--blue)}
+
+/* ORBIT */
+.orbit-wrap{background:linear-gradient(135deg,#07112b 0%,#0c1e45 60%,#071420 100%);border-radius:18px;padding:1rem 1rem .8rem;margin-bottom:1rem;border:1px solid rgba(125,211,252,.15);box-shadow:0 8px 32px rgba(0,0,0,.4)}
+.orbit-inner{position:relative;height:145px}
 .orbit-svg{width:100%;height:100%}
-.cards{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1fr;gap:.9rem;margin-bottom:.9rem}
+
+/* CARDS */
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem}
 @media(max-width:600px){.cards{grid-template-columns:1fr}}
-.card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1.1rem}
-.card-tag{font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:.6rem}
-.goal-text{font-size:1rem;font-weight:600;line-height:1.45;min-height:2rem}
-.goal-text.empty{color:var(--muted);font-weight:400;font-style:italic;font-size:.9rem}
-.fraction{font-family:'Space Mono',monospace;font-size:2.1rem;font-weight:700;margin-bottom:.55rem}
+.card{background:var(--card);border:1.5px solid var(--border);border-radius:16px;padding:1.2rem;box-shadow:0 4px 20px rgba(0,0,0,.2)}
+.card-tag{font-family:'Orbitron',sans-serif;font-size:.55rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:.7rem;font-weight:700}
+.fraction{font-family:'Orbitron',monospace;font-size:2rem;font-weight:700;margin-bottom:.55rem;letter-spacing:.02em}
 .fraction .done{color:var(--green)}
 .fraction .sep{color:var(--border)}
-.fraction .tot{color:var(--muted)}
-.bar-wrap{height:8px;background:var(--border);border-radius:4px;overflow:hidden;margin-bottom:.45rem}
-.bar{height:100%;border-radius:4px;background:var(--green);transition:width .7s cubic-bezier(.4,0,.2,1);width:0%}
-.bar.warn{background:var(--amber)}
-.pct{font-family:'Space Mono',monospace;font-size:.7rem;color:var(--muted)}
-.badge{display:inline-flex;align-items:center;gap:.4rem;padding:.3rem .75rem;border-radius:999px;font-size:.72rem;font-weight:600;margin-top:.65rem;border:1px solid}
-.badge.orbit{background:var(--green-dim);color:var(--green);border-color:var(--green-mid)}
-.badge.burn{background:var(--amber-dim);color:var(--amber);border-color:rgba(255,184,48,.3)}
-.badge.hold{background:var(--surface2);color:var(--muted);border-color:var(--border)}
-.map-card{position:relative;z-index:2;background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1.1rem;margin-bottom:.9rem}
-.checkpoints{display:flex;gap:.5rem;flex-wrap:wrap;padding-bottom:14px}
-.cp{width:38px;height:38px;border-radius:9px;border:1px solid var(--border);background:rgba(0,0,0,.3);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .2s;position:relative;font-size:1rem}
-.cp:hover{transform:translateY(-3px);border-color:var(--amber)}
-.cp.today{border-color:var(--amber);box-shadow:0 0 12px rgba(255,184,48,.2)}
-.cp.complete{background:var(--green-dim);border-color:var(--green-mid)}
-.cp.partial{background:var(--amber-dim);border-color:rgba(255,184,48,.3)}
-.cp .cp-num{position:absolute;bottom:-13px;font-family:'Space Mono',monospace;font-size:.5rem;color:var(--muted)}
-.mission-status{display:flex;align-items:center;gap:.6rem;margin-top:.8rem}
-.status-text{font-size:.78rem;color:var(--muted)}
-.status-text strong{color:var(--amber)}
-.controls{position:relative;z-index:2;background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1.2rem}
-.ctrl-head{font-size:.88rem;font-weight:600;margin-bottom:1rem;display:flex;align-items:center;gap:.5rem;color:var(--text)}
-.ctrl-sub{font-size:.7rem;color:var(--muted);font-weight:400;margin-left:.3rem}
-.field{display:flex;flex-direction:column;gap:.4rem;margin-bottom:.85rem}
-.field label{font-family:'Space Mono',monospace;font-size:.62rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted)}
-.field-row{display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
-input[type=text],input[type=number]{background:#1e2540;border:1px solid #3a4470;border-radius:9px;padding:.55rem .8rem;color:#ffffff;font-family:'Space Grotesk',sans-serif;font-size:.9rem;outline:none;transition:border-color .2s, background .2s}
-input[type=text]:hover,input[type=number]:hover{background:#252d52;border-color:#4a5890}
-input[type=text]{flex:1;min-width:180px}
-input[type=number]{width:76px}
-input:focus{border-color:var(--blue)}
-input::placeholder{color:var(--muted);font-size:.83rem}
-.btn{padding:.55rem 1.2rem;border-radius:9px;font-family:'Space Grotesk',sans-serif;font-size:.85rem;font-weight:700;cursor:pointer;border:none;transition:all .15s}
-.btn-primary{background:var(--amber);color:#07090f}
-.btn-primary:hover{opacity:.88;transform:translateY(-1px)}
-.btn-ghost{background:transparent;border:1px solid var(--border);color:var(--mid)}
-.btn-ghost:hover{border-color:var(--blue);color:var(--blue)}
-.btn:disabled{opacity:.4;cursor:default;transform:none}
-.divider{height:1px;background:var(--border);margin:.85rem 0}
-.log-label{font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:.55rem}
-.log-feed{display:flex;flex-direction:column;gap:.4rem;max-height:190px;overflow-y:auto}
-.log-entry{display:flex;gap:.65rem;padding:.5rem .75rem;border-radius:8px;background:var(--surface2);border-left:3px solid var(--border);font-size:.8rem;align-items:flex-start}
-.log-entry.mission{border-left-color:var(--blue)}
-.log-entry.burn{border-left-color:var(--amber)}
-.log-entry.orbit{border-left-color:var(--green);background:var(--green-dim)}
-.log-t{font-family:'Space Mono',monospace;font-size:.6rem;color:var(--muted);flex-shrink:0;padding-top:.1rem}
-.log-m{color:var(--mid);line-height:1.45;flex:1}
-.log-m strong{color:var(--text)}
-.empty-log{color:var(--muted);font-size:.8rem;text-align:center;padding:.9rem}
-.toast{position:fixed;left:50%;top:15%;transform:translate(-50%,-30px) scale(.92);background:var(--surface);border:1px solid var(--amber);border-radius:16px;padding:1.3rem 2rem;text-align:center;z-index:999;opacity:0;pointer-events:none;transition:all .5s cubic-bezier(.34,1.4,.64,1);min-width:280px;max-width:380px}
+.fraction .tot{color:#94a3b8}
+.bar-wrap{height:10px;background:#eef2ff;border-radius:5px;overflow:hidden;margin-bottom:.5rem;border:1px solid var(--border)}
+.bar{height:100%;border-radius:5px;background:linear-gradient(90deg,#047857,#10b981);transition:width .7s cubic-bezier(.4,0,.2,1);width:0%}
+.bar.warn{background:linear-gradient(90deg,#d97706,#fbbf24)}
+.pct{font-family:'Orbitron',sans-serif;font-size:.6rem;color:var(--muted);letter-spacing:.05em}
+.badge{display:inline-flex;align-items:center;gap:.4rem;padding:.35rem .85rem;border-radius:999px;font-size:.65rem;font-weight:700;margin-top:.7rem;border:1.5px solid;font-family:'Orbitron',sans-serif;letter-spacing:.04em}
+.badge.orbit{background:var(--green-bg);color:var(--green);border-color:var(--green-border)}
+.badge.burn{background:var(--amber-bg);color:var(--amber);border-color:var(--amber-border)}
+.badge.hold{background:var(--card2);color:var(--muted);border-color:var(--border)}
+
+/* TASKS */
+.task-list{display:flex;flex-direction:column;gap:.5rem;margin-bottom:.6rem}
+.task-item{display:flex;align-items:center;gap:.75rem;padding:.65rem .85rem;border-radius:10px;background:var(--card2);border:1.5px solid var(--border);transition:all .2s;cursor:pointer;user-select:none}
+.task-item:hover{border-color:#93c5fd;background:#eff6ff}
+.task-item.done-task{background:var(--green-bg);border-color:var(--green-border)}
+.task-item.done-task .task-label{text-decoration:line-through;color:#94a3b8}
+.task-check{width:24px;height:24px;border-radius:6px;border:2px solid #cbd5e1;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:.85rem;transition:all .2s;background:#fff}
+.task-item.done-task .task-check{background:var(--green);border-color:var(--green);color:#fff}
+.task-label{font-size:.9rem;color:var(--text);flex:1;line-height:1.35;font-family:'DM Sans',sans-serif}
+.task-delete{color:var(--red);font-size:.85rem;padding:.15rem .35rem;border-radius:5px;opacity:0;transition:opacity .15s;background:none;border:none;cursor:pointer}
+.task-item:hover .task-delete{opacity:1}
+.no-tasks{color:#94a3b8;font-size:.82rem;font-style:italic;padding:.5rem 0;text-align:center;font-family:'DM Sans',sans-serif}
+.task-add-row{display:flex;gap:.5rem;align-items:center}
+.task-input{flex:1;background:#f0f5ff;border:1.5px solid #c7d7fd;border-radius:9px;padding:.52rem .8rem;color:var(--navy);font-family:'DM Sans',sans-serif;font-size:.88rem;outline:none;transition:all .2s}
+.task-input:focus{border-color:var(--blue);background:#fff;box-shadow:0 0 0 3px rgba(29,78,216,.08)}
+.task-input::placeholder{color:#94a3b8}
+.btn-add{background:var(--navy);color:#fff;padding:.52rem 1rem;border-radius:9px;font-family:'Orbitron',sans-serif;font-size:.58rem;font-weight:700;cursor:pointer;border:none;letter-spacing:.05em;transition:all .15s;white-space:nowrap}
+.btn-add:hover{background:#1d3a8a;box-shadow:0 4px 12px rgba(15,30,92,.3);transform:translateY(-1px)}
+.btn-add:disabled{opacity:.4;cursor:default;transform:none}
+
+/* MAP */
+.map-card{background:var(--card);border:1.5px solid var(--border);border-radius:16px;padding:1.2rem;margin-bottom:1rem;box-shadow:0 4px 20px rgba(0,0,0,.2)}
+.checkpoints{display:flex;gap:.55rem;flex-wrap:wrap;padding-bottom:18px}
+.cp{width:42px;height:42px;border-radius:10px;border:1.5px solid var(--border);background:var(--card2);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .2s;position:relative;font-size:1.05rem;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+.cp:hover{transform:translateY(-4px);border-color:var(--amber);box-shadow:0 6px 16px rgba(217,119,6,.2)}
+.cp.today{border-color:var(--blue);box-shadow:0 0 0 3px rgba(29,78,216,.15)}
+.cp.complete{background:var(--green-bg);border-color:var(--green-border)}
+.cp.partial{background:var(--amber-bg);border-color:var(--amber-border)}
+.cp .cp-num{position:absolute;bottom:-15px;font-family:'Orbitron',monospace;font-size:.48rem;color:var(--muted);font-weight:700;letter-spacing:.04em}
+.status-text{font-size:.78rem;color:var(--muted);margin-top:.4rem;font-family:'DM Sans',sans-serif}
+.status-text strong{color:var(--navy)}
+
+/* TOAST */
+.toast{position:fixed;left:50%;top:15%;transform:translate(-50%,-30px) scale(.92);background:#fff;border:2px solid #fbbf24;border-radius:18px;padding:1.4rem 2rem;text-align:center;z-index:999;opacity:0;pointer-events:none;transition:all .5s cubic-bezier(.34,1.4,.64,1);min-width:280px;max-width:390px;box-shadow:0 12px 50px rgba(0,0,0,.35)}
 .toast.show{opacity:1;transform:translate(-50%,0) scale(1)}
-.toast-icon{font-size:2.2rem;margin-bottom:.3rem}
-.toast-title{font-family:'Space Mono',monospace;font-size:1rem;font-weight:700;color:var(--amber);margin-bottom:.2rem}
-.toast-sub{font-size:.82rem;color:var(--mid)}
+.toast-icon{font-size:2.4rem;margin-bottom:.3rem}
+.toast-title{font-family:'Orbitron',monospace;font-size:.9rem;font-weight:900;color:#b45309;margin-bottom:.3rem;letter-spacing:.06em}
+.toast-sub{font-size:.82rem;color:#64748b;font-family:'DM Sans',sans-serif}
 #confetti{position:fixed;inset:0;pointer-events:none;z-index:998}
 </style>
 </head>
 <body>
 <div class="starfield" id="stars"></div>
+<div class="nebula neb1"></div>
+<div class="nebula neb2"></div>
+<div class="nebula neb3"></div>
 <canvas id="confetti"></canvas>
+
 <div class="toast" id="toast">
   <div class="toast-icon" id="t-icon">🛰</div>
   <div class="toast-title" id="t-title">Checkpoint reached!</div>
@@ -114,88 +157,87 @@ input::placeholder{color:var(--muted);font-size:.83rem}
 </div>
 
 <div class="page">
+
   <div class="header">
     <div class="mission-tag">Mission Control · 10-Day Sprint</div>
     <div class="title">PROJECT <span>VERTICAL</span></div>
-    <div class="tagline">Subtotals live in production. T-minus 10 days.</div>
+    <div class="tagline">Subtotals live in production — T-minus 10 days</div>
   </div>
 
   <div class="sync-bar">
     <div class="sync-dot loading" id="sync-dot"></div>
     <span id="sync-label">Connecting to Mission Control...</span>
-    <button class="btn btn-ghost" id="refresh-btn" onclick="loadData()" style="padding:.25rem .7rem;font-size:.65rem;margin-left:.4rem">↻ Refresh</button>
+    <button class="refresh-btn" onclick="loadData()">↻ REFRESH</button>
   </div>
 
   <div class="day-nav">
-    <button class="nav-btn" id="prev-btn" onclick="prevDay()">← Prev</button>
-    <span class="day-label" id="day-label">Day 1</span>
-    <button class="nav-btn" id="next-btn" onclick="nextDay()">Next →</button>
+    <button class="nav-btn" id="prev-btn" onclick="prevDay()">← PREV</button>
+    <span class="day-label" id="day-label">DAY 1</span>
+    <button class="nav-btn" id="next-btn" onclick="nextDay()">NEXT →</button>
   </div>
 
+  <!-- OBJECTIVE -->
+  <div class="objective-banner">
+    <div class="obj-label">🎯 Today's Mission Objective</div>
+    <div class="obj-display empty" id="obj-display">No objective set — type it below and hit Set Objective</div>
+    <div class="obj-edit-row" id="obj-edit-row">
+      <input class="obj-input" type="text" id="obj-input" placeholder="What does the team need to achieve today?"/>
+      <button class="btn-set" id="obj-btn" onclick="setObjective()">SET OBJECTIVE</button>
+    </div>
+    <button class="btn-edit" id="obj-change-btn" onclick="showObjEdit()" style="display:none">✏️ CHANGE OBJECTIVE</button>
+  </div>
+
+  <!-- ORBIT -->
   <div class="orbit-wrap">
     <div class="orbit-inner">
-      <svg class="orbit-svg" id="orbit-svg" viewBox="0 0 860 140" preserveAspectRatio="none">
+      <svg class="orbit-svg" viewBox="0 0 860 145" preserveAspectRatio="none">
         <defs>
           <marker id="arr" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
-            <path d="M0,0 L6,3 L0,6 Z" fill="rgba(74,158,255,0.4)"/>
+            <path d="M0,0 L6,3 L0,6 Z" fill="rgba(125,211,252,0.5)"/>
           </marker>
+          <filter id="glow">
+            <feGaussianBlur stdDeviation="2.5" result="coloredBlur"/>
+            <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
         </defs>
-        <path d="M 40,110 Q 220,20 430,70 Q 640,120 820,25" fill="none" stroke="rgba(74,158,255,0.25)" stroke-width="1.5" stroke-dasharray="6 5" marker-end="url(#arr)"/>
+        <path d="M 40,112 Q 220,18 430,72 Q 640,122 820,26" fill="none" stroke="rgba(125,211,252,0.2)" stroke-width="1.5" stroke-dasharray="6 5" marker-end="url(#arr)"/>
         <g id="orbit-dots"></g>
-        <text id="rocket" x="40" y="110" font-size="26" text-anchor="middle" dominant-baseline="middle" style="transition: all 1.4s cubic-bezier(.34,1.2,.64,1)">🚀</text>
-        <text x="30" y="125" font-size="22" text-anchor="middle" opacity=".7">🌍</text>
-        <text x="830" y="25" font-size="22" text-anchor="middle" dominant-baseline="middle">🛸</text>
-        <text id="alt-text" x="430" y="16" font-family="'Space Mono',monospace" font-size="11" fill="rgba(74,158,255,0.7)" text-anchor="middle">Day 1 of 10</text>
+        <text id="rocket" x="40" y="112" font-size="26" text-anchor="middle" dominant-baseline="middle" style="transition:all 1.4s cubic-bezier(.34,1.2,.64,1)" filter="url(#glow)">🚀</text>
+        <text x="30" y="128" font-size="22" text-anchor="middle" opacity=".9">🌍</text>
+        <text x="830" y="26" font-size="22" text-anchor="middle" dominant-baseline="middle">🛸</text>
+        <text id="alt-text" x="430" y="14" font-family="'Orbitron',monospace" font-size="10" fill="rgba(125,211,252,0.7)" text-anchor="middle" letter-spacing="2">DAY 1 OF 10</text>
       </svg>
     </div>
   </div>
 
+  <!-- TELEMETRY + TASKS -->
   <div class="cards">
     <div class="card">
-      <div class="card-tag">🎯 Today's mission</div>
-      <div class="goal-text empty" id="goal-display">No mission briefing yet — set it in standup below</div>
-      <div class="badge hold" id="status-badge">⏸ On the launchpad</div>
+      <div class="card-tag">📡 Telemetry</div>
+      <div class="fraction"><span class="done" id="f-done">0</span><span class="sep"> / </span><span class="tot" id="f-tot">—</span></div>
+      <div class="bar-wrap"><div class="bar" id="prog-bar"></div></div>
+      <div class="pct" id="pct-label">NO TASKS YET</div>
+      <div class="badge hold" id="status-badge">⏸ ON THE LAUNCHPAD</div>
     </div>
     <div class="card">
-      <div class="card-tag">📡 Telemetry</div>
-      <div class="fraction"><span class="done" id="f-done">0</span><span class="sep">/</span><span class="tot" id="f-tot">—</span></div>
-      <div class="bar-wrap"><div class="bar" id="prog-bar"></div></div>
-      <div class="pct" id="pct-label">0% mission complete</div>
+      <div class="card-tag">✅ Today's Tasks — tap to tick off</div>
+      <div class="task-list" id="task-list">
+        <div class="no-tasks">No tasks yet — add one below</div>
+      </div>
+      <div class="task-add-row">
+        <input class="task-input" type="text" id="task-input" placeholder="Add a task and press Enter..."/>
+        <button class="btn-add" id="add-btn" onclick="addTask()">+ ADD</button>
+      </div>
     </div>
   </div>
 
+  <!-- MISSION MAP -->
   <div class="map-card">
-    <div class="card-tag">🗺 Mission map — 10 checkpoints to deployment</div>
+    <div class="card-tag">🗺 Mission Map — 10 Checkpoints to Deployment</div>
     <div class="checkpoints" id="checkpoints"></div>
-    <div class="mission-status">
-      <span class="status-text" id="ms-text">Mission underway — first checkpoint awaits.</span>
-    </div>
+    <div class="status-text" id="ms-text">Mission underway — first checkpoint awaits.</div>
   </div>
 
-  <div class="controls">
-    <div class="ctrl-head">📻 Mission Briefing <span class="ctrl-sub">— two fields, that's it</span></div>
-    <div class="field">
-      <label>Today's mission objective</label>
-      <div class="field-row">
-        <input type="text" id="goal-input" placeholder="e.g. Subtotal rendering complete for column headers"/>
-        <button class="btn btn-ghost" id="goal-btn" onclick="setGoal()">Log Objective</button>
-      </div>
-    </div>
-    <div class="field">
-      <label>Progress update — done / total tasks</label>
-      <div class="field-row">
-        <input type="number" id="done-input" min="0" placeholder="Done"/>
-        <span style="color:var(--muted);font-size:.82rem">of</span>
-        <input type="number" id="total-input" min="1" placeholder="Total"/>
-        <button class="btn btn-primary" id="prog-btn" onclick="logProgress()">🚀 Transmit</button>
-      </div>
-    </div>
-    <div class="divider"></div>
-    <div class="log-label">Transmission log</div>
-    <div class="log-feed" id="log-feed">
-      <div class="empty-log">No transmissions yet.</div>
-    </div>
-  </div>
 </div>
 
 <script>
@@ -215,261 +257,171 @@ const MSGS = [
   "Final approach. One push left.",
   "🛸 DEPLOYMENT. Subtotals are LIVE in production. Mission complete."
 ];
-const ROCKET_POS = [
-  [40,110],[120,72],[200,42],[285,30],[370,52],
-  [430,70],[510,80],[600,60],[700,38],[820,25]
-];
+const ROCKET_POS=[[40,112],[120,74],[200,44],[285,30],[370,54],[430,72],[510,82],[600,62],[700,40],[820,26]];
 
-let day = 1;
-let binId = localStorage.getItem('pv_bin_id') || null;
-let data = Array.from({length:DAYS},()=>({goal:'',done:0,total:0,log:[]}));
-let saving = false;
+let day=1,binId=localStorage.getItem('pv_bin_id')||null,saving=false;
+let data=Array.from({length:DAYS},()=>({objective:'',tasks:[]}));
 
-const hit = d => d.total > 0 && d.done >= d.total;
-const conquered = () => data.filter(hit).length;
-const ts = () => new Date().toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'});
+const hit=d=>d.tasks.length>0&&d.tasks.every(t=>t.done);
+const conquered=()=>data.filter(hit).length;
+const ts=()=>new Date().toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'});
 
-function setSyncState(state, msg){
-  const dot = document.getElementById('sync-dot');
-  const lbl = document.getElementById('sync-label');
-  dot.className = 'sync-dot ' + state;
-  lbl.textContent = msg;
+function setSyncState(s,m){
+  document.getElementById('sync-dot').className='sync-dot '+s;
+  document.getElementById('sync-label').textContent=m;
 }
-
-function setButtons(disabled){
-  ['goal-btn','prog-btn'].forEach(id => document.getElementById(id).disabled = disabled);
+function setButtons(d){
+  ['add-btn','obj-btn'].forEach(id=>{const el=document.getElementById(id);if(el)el.disabled=d;});
 }
 
 async function loadData(){
-  setSyncState('loading','Syncing with Mission Control...');
-  try {
+  setSyncState('loading','Connecting to Mission Control...');
+  try{
     if(!binId){
-      // search for existing bin by name
-      const searchRes = await fetch(`https://api.jsonbin.io/v3/b?meta=true`,{
-        headers:{'X-Master-Key':API_KEY}
-      });
-      if(searchRes.ok){
-        const bins = await searchRes.json();
-        const match = Array.isArray(bins) && bins.find(b => b.snippetMeta && b.snippetMeta.name === BIN_NAME);
-        if(match){ binId = match.id; localStorage.setItem('pv_bin_id', binId); }
-      }
+      const r=await fetch('https://api.jsonbin.io/v3/b?meta=true',{headers:{'X-Master-Key':API_KEY}});
+      if(r.ok){const bins=await r.json();const m=Array.isArray(bins)&&bins.find(b=>b.snippetMeta&&b.snippetMeta.name===BIN_NAME);if(m){binId=m.id;localStorage.setItem('pv_bin_id',binId);}}
     }
     if(binId){
-      const res = await fetch(`https://api.jsonbin.io/v3/b/${binId}/latest`,{
-        headers:{'X-Master-Key':API_KEY}
-      });
-      if(res.ok){
-        const json = await res.json();
-        data = json.record.data;
-        setSyncState('ok','Live — last sync ' + ts());
-        render();
-        return;
-      }
+      const r=await fetch(`https://api.jsonbin.io/v3/b/${binId}/latest`,{headers:{'X-Master-Key':API_KEY}});
+      if(r.ok){const j=await r.json();data=j.record.data;setSyncState('ok','Live — synced '+ts());render();return;}
     }
-    // no bin yet — create one
     await createBin();
-  } catch(e){
-    setSyncState('err','Connection failed — working offline');
-    loadLocal();
-  }
+  }catch(e){setSyncState('err','Offline — showing local data');const l=localStorage.getItem('pv_local');if(l){data=JSON.parse(l);render();}}
 }
 
 async function createBin(){
-  try {
-    const res = await fetch('https://api.jsonbin.io/v3/b',{
-      method:'POST',
-      headers:{'Content-Type':'application/json','X-Master-Key':API_KEY,'X-Bin-Name':BIN_NAME,'X-Bin-Private':'false'},
-      body: JSON.stringify({data})
-    });
-    if(res.ok){
-      const json = await res.json();
-      binId = json.metadata.id;
-      localStorage.setItem('pv_bin_id', binId);
-      setSyncState('ok','Mission Control online — bin created');
-      render();
-    } else {
-      throw new Error('Create failed');
-    }
-  } catch(e){
-    setSyncState('err','Could not create bin — check API key');
-  }
+  try{
+    const r=await fetch('https://api.jsonbin.io/v3/b',{method:'POST',headers:{'Content-Type':'application/json','X-Master-Key':API_KEY,'X-Bin-Name':BIN_NAME,'X-Bin-Private':'false'},body:JSON.stringify({data})});
+    if(r.ok){const j=await r.json();binId=j.metadata.id;localStorage.setItem('pv_bin_id',binId);setSyncState('ok','Mission Control online');render();}
+    else throw new Error();
+  }catch(e){setSyncState('err','Could not connect — check API key');}
 }
 
 async function saveData(){
-  if(!binId || saving) return;
-  saving = true;
-  setSyncState('loading','Transmitting...');
-  setButtons(true);
-  try {
-    const res = await fetch(`https://api.jsonbin.io/v3/b/${binId}`,{
-      method:'PUT',
-      headers:{'Content-Type':'application/json','X-Master-Key':API_KEY},
-      body: JSON.stringify({data})
-    });
-    if(res.ok){
-      localStorage.setItem('pv_local', JSON.stringify(data));
-      setSyncState('ok','Transmitted — ' + ts());
-    } else {
-      throw new Error('Save failed');
-    }
-  } catch(e){
-    setSyncState('err','Transmission failed — refresh and try again');
-  }
-  saving = false;
-  setButtons(false);
+  if(!binId||saving)return;
+  saving=true;setSyncState('loading','Transmitting...');setButtons(true);
+  try{
+    const r=await fetch(`https://api.jsonbin.io/v3/b/${binId}`,{method:'PUT',headers:{'Content-Type':'application/json','X-Master-Key':API_KEY},body:JSON.stringify({data})});
+    if(r.ok){localStorage.setItem('pv_local',JSON.stringify(data));setSyncState('ok','Transmitted — '+ts());}
+    else throw new Error();
+  }catch(e){setSyncState('err','Transmission failed — try refresh');}
+  saving=false;setButtons(false);
 }
 
-function loadLocal(){
-  const local = localStorage.getItem('pv_local');
-  if(local){ data = JSON.parse(local); render(); }
+function setObjective(){
+  const v=document.getElementById('obj-input').value.trim();if(!v)return;
+  data[day-1].objective=v;document.getElementById('obj-input').value='';
+  render();saveData();
 }
-
-function setGoal(){
-  const v = document.getElementById('goal-input').value.trim();
-  if(!v) return;
-  data[day-1].goal = v;
-  data[day-1].log.unshift({t:ts(),type:'mission',m:`Mission objective: <strong>${v}</strong>`});
-  document.getElementById('goal-input').value = '';
-  render();
-  saveData();
+function showObjEdit(){
+  document.getElementById('obj-edit-row').style.display='flex';
+  document.getElementById('obj-change-btn').style.display='none';
+  document.getElementById('obj-input').focus();
 }
-
-function logProgress(){
-  const done = parseInt(document.getElementById('done-input').value);
-  const total = parseInt(document.getElementById('total-input').value);
-  if(isNaN(done)||isNaN(total)||total<1||done<0) return;
-  const d = data[day-1];
-  const was = hit(d);
-  d.done = done; d.total = total;
-  const pct = Math.round(done/total*100);
-  const now = hit(d);
-  d.log.unshift({
-    t:ts(), type: now?'orbit':'burn',
-    m: now
-      ? `✅ <strong>Checkpoint reached!</strong> ${done}/${total} — ${MSGS[day-1]}`
-      : `Telemetry: <strong>${done}/${total}</strong> (${pct}%) — engines burning.`
-  });
-  document.getElementById('done-input').value='';
-  document.getElementById('total-input').value='';
-  render();
-  saveData();
-  if(now && !was){ fireConfetti(day===DAYS?260:120); showToast(day); }
+function addTask(){
+  const v=document.getElementById('task-input').value.trim();if(!v)return;
+  data[day-1].tasks.push({id:Date.now(),label:v,done:false});
+  document.getElementById('task-input').value='';
+  document.getElementById('task-input').focus();
+  render();saveData();
 }
-
+function toggleTask(id){
+  const t=data[day-1].tasks.find(t=>t.id===id);if(!t)return;
+  const was=hit(data[day-1]);t.done=!t.done;const now=hit(data[day-1]);
+  render();saveData();
+  if(now&&!was){fireConfetti(day===DAYS?260:130);showToast(day);}
+}
+function deleteTask(id){
+  data[day-1].tasks=data[day-1].tasks.filter(t=>t.id!==id);render();saveData();
+}
 function showToast(d){
-  const t = document.getElementById('toast');
-  document.getElementById('t-icon').textContent = d===DAYS?'🛸':'🛰';
-  document.getElementById('t-title').textContent = d===DAYS?'DEPLOYMENT ACHIEVED!':NAMES[d-1]+' reached!';
-  document.getElementById('t-sub').textContent = MSGS[d-1];
-  t.classList.add('show');
-  setTimeout(()=>t.classList.remove('show'),4200);
+  const t=document.getElementById('toast');
+  document.getElementById('t-icon').textContent=d===DAYS?'🛸':'🛰';
+  document.getElementById('t-title').textContent=d===DAYS?'DEPLOYMENT ACHIEVED!':NAMES[d-1]+' REACHED!';
+  document.getElementById('t-sub').textContent=MSGS[d-1];
+  t.classList.add('show');setTimeout(()=>t.classList.remove('show'),4500);
 }
 
 function render(){
-  const d = data[day-1];
-  document.getElementById('day-label').textContent = `Day ${day} of ${DAYS}`;
-  document.getElementById('prev-btn').disabled = day===1;
-  document.getElementById('next-btn').disabled = day===DAYS;
+  const d=data[day-1];
+  document.getElementById('day-label').textContent=`DAY ${day} OF ${DAYS}`;
+  document.getElementById('prev-btn').disabled=day===1;
+  document.getElementById('next-btn').disabled=day===DAYS;
 
-  const gEl = document.getElementById('goal-display');
-  if(d.goal){ gEl.textContent=d.goal; gEl.className='goal-text'; }
-  else { gEl.textContent='No mission briefing yet — set it in standup below'; gEl.className='goal-text empty'; }
+  const od=document.getElementById('obj-display'),er=document.getElementById('obj-edit-row'),cb=document.getElementById('obj-change-btn');
+  if(d.objective){od.textContent=d.objective;od.className='obj-display';er.style.display='none';cb.style.display='inline-flex';}
+  else{od.textContent='No objective set — type it below and hit Set Objective';od.className='obj-display empty';er.style.display='flex';cb.style.display='none';}
 
-  const b = document.getElementById('status-badge');
-  if(hit(d)){ b.className='badge orbit'; b.textContent=day===DAYS?'🛸 Deployed!':'🛰 Checkpoint reached'; }
-  else if(d.done>0){ b.className='badge burn'; b.textContent='🔥 Engines burning'; }
-  else { b.className='badge hold'; b.textContent='⏸ On the launchpad'; }
-
-  const done=d.done||0, total=d.total||0;
+  const total=d.tasks.length,done=d.tasks.filter(t=>t.done).length;
   document.getElementById('f-done').textContent=done;
   document.getElementById('f-tot').textContent=total||'—';
-  const pct=total>0?Math.min(100,Math.round(done/total*100)):0;
+  const pct=total>0?Math.round(done/total*100):0;
   const bar=document.getElementById('prog-bar');
-  bar.style.width=pct+'%';
-  bar.className='bar'+(pct>0&&pct<50?' warn':'');
-  document.getElementById('pct-label').textContent=`${pct}% mission complete`;
+  bar.style.width=pct+'%';bar.className='bar'+(pct>0&&pct<100?' warn':'');
+  document.getElementById('pct-label').textContent=total>0?`${pct}% OF TASKS COMPLETE`:'NO TASKS YET';
+  const b=document.getElementById('status-badge');
+  if(hit(d)){b.className='badge orbit';b.textContent=day===DAYS?'🛸 DEPLOYED':'🛰 CHECKPOINT REACHED';}
+  else if(done>0){b.className='badge burn';b.textContent='🔥 ENGINES BURNING';}
+  else{b.className='badge hold';b.textContent='⏸ ON THE LAUNCHPAD';}
 
-  const c=conquered();
-  const pos=c>0?ROCKET_POS[c-1]:ROCKET_POS[0];
+  const list=document.getElementById('task-list');
+  list.innerHTML=d.tasks.length
+    ?d.tasks.map(t=>`<div class="task-item${t.done?' done-task':''}" onclick="toggleTask(${t.id})"><div class="task-check">${t.done?'✓':''}</div><span class="task-label">${t.label}</span><button class="task-delete" onclick="event.stopPropagation();deleteTask(${t.id})" title="Remove">✕</button></div>`).join('')
+    :'<div class="no-tasks">No tasks yet — add one below</div>';
+
+  const c=conquered(),pos=c>0?ROCKET_POS[c-1]:ROCKET_POS[0];
   document.getElementById('rocket').setAttribute('x',pos[0]);
   document.getElementById('rocket').setAttribute('y',pos[1]);
-  document.getElementById('alt-text').textContent=`Day ${day} of ${DAYS} · ${c} checkpoint${c!==1?'s':''} cleared`;
+  document.getElementById('rocket').textContent=c===DAYS?'🛸':'🚀';
+  document.getElementById('alt-text').textContent=`DAY ${day} OF ${DAYS}  ·  ${c} CHECKPOINT${c!==1?'S':''} CLEARED`;
 
-  const dotsG=document.getElementById('orbit-dots');
-  dotsG.innerHTML='';
+  const dg=document.getElementById('orbit-dots');dg.innerHTML='';
   ROCKET_POS.forEach(([x,y],i)=>{
-    const circ=document.createElementNS('http://www.w3.org/2000/svg','circle');
-    circ.setAttribute('cx',x); circ.setAttribute('cy',y); circ.setAttribute('r',5);
-    const done2=hit(data[i]), isCur=i===day-1;
-    circ.setAttribute('fill',done2?'rgba(61,219,160,0.8)':isCur?'rgba(255,184,48,0.8)':'rgba(30,37,64,0.9)');
-    circ.setAttribute('stroke',done2?'rgba(61,219,160,1)':isCur?'rgba(255,184,48,1)':'rgba(74,158,255,0.25)');
-    circ.setAttribute('stroke-width','1.5');
-    circ.style.cursor='pointer';
-    circ.onclick=()=>{day=i+1;render();};
-    dotsG.appendChild(circ);
+    const ci=document.createElementNS('http://www.w3.org/2000/svg','circle');
+    ci.setAttribute('cx',x);ci.setAttribute('cy',y);ci.setAttribute('r',6);
+    const comp=hit(data[i]),cur=i===day-1;
+    ci.setAttribute('fill',comp?'rgba(52,211,153,.9)':cur?'rgba(251,191,36,.9)':'rgba(255,255,255,.1)');
+    ci.setAttribute('stroke',comp?'#6ee7b7':cur?'#fbbf24':'rgba(255,255,255,.2)');
+    ci.setAttribute('stroke-width','1.5');ci.style.cursor='pointer';
+    if(comp||cur)ci.setAttribute('filter','url(#glow)');
+    ci.onclick=()=>{day=i+1;render();};dg.appendChild(ci);
   });
 
-  const cpRow=document.getElementById('checkpoints');
-  cpRow.innerHTML='';
+  const cp=document.getElementById('checkpoints');cp.innerHTML='';
   data.forEach((dd,i)=>{
-    const cp=document.createElement('div');
-    const complete=hit(dd);
-    cp.className='cp'+(complete?' complete':dd.done>0?' partial':'')+(i+1===day?' today':'');
-    cp.innerHTML=(complete?(i===DAYS-1?'🛸':'🛰'):dd.done>0?'🔥':'·')+`<span class="cp-num">${i+1}</span>`;
-    cp.title=`Day ${i+1} · ${NAMES[i]}${dd.goal?' — '+dd.goal:''}`;
-    cp.onclick=()=>{day=i+1;render();};
-    cpRow.appendChild(cp);
+    const el=document.createElement('div');
+    const comp=hit(dd),part=!comp&&dd.tasks.some(t=>t.done);
+    el.className='cp'+(comp?' complete':part?' partial':'')+(i+1===day?' today':'');
+    el.innerHTML=(comp?(i===DAYS-1?'🛸':'🛰'):part?'🔥':'·')+`<span class="cp-num">${i+1}</span>`;
+    el.title=`Day ${i+1} · ${NAMES[i]}${dd.objective?' — '+dd.objective:''}`;
+    el.onclick=()=>{day=i+1;render();};cp.appendChild(el);
   });
 
   const c2=conquered();
-  document.getElementById('ms-text').innerHTML=c2===0
-    ?'Mission underway — first checkpoint awaits.'
-    :c2===DAYS
-    ?'<strong>MISSION COMPLETE.</strong> Subtotals live in production. Legends.'
-    :`<strong>${c2} of ${DAYS}</strong> checkpoints cleared — ${DAYS-c2} to deployment.`;
-
-  const feed=document.getElementById('log-feed');
-  if(!d.log.length){ feed.innerHTML='<div class="empty-log">No transmissions yet — log today\'s objective above.</div>'; }
-  else { feed.innerHTML=d.log.map(e=>`<div class="log-entry ${e.type}"><span class="log-t">${e.t}</span><span class="log-m">${e.m}</span></div>`).join(''); }
+  document.getElementById('ms-text').innerHTML=c2===0?'Mission underway — first checkpoint awaits.':c2===DAYS?'<strong>MISSION COMPLETE.</strong> Subtotals live in production. Legends.':`<strong>${c2} of ${DAYS}</strong> checkpoints cleared — ${DAYS-c2} to deployment.`;
 }
 
-function prevDay(){ if(day>1){day--;render();} }
-function nextDay(){ if(day<DAYS){day++;render();} }
+function prevDay(){if(day>1){day--;render();}}
+function nextDay(){if(day<DAYS){day++;render();}}
 
 function fireConfetti(n){
-  const c=document.getElementById('confetti');
-  const ctx=c.getContext('2d');
-  c.width=innerWidth; c.height=innerHeight;
-  const cols=['#4a9eff','#ffb830','#3ddba0','#ffffff','#ff5266','#c084fc'];
-  const p=Array.from({length:n},()=>({
-    x:Math.random()*c.width,y:-20-Math.random()*100,
-    r:3+Math.random()*5,d:2+Math.random()*3.5,
-    col:cols[(Math.random()*cols.length)|0],
-    ta:Math.random()*Math.PI,ts:.04+Math.random()*.1
-  }));
+  const c=document.getElementById('confetti'),ctx=c.getContext('2d');
+  c.width=innerWidth;c.height=innerHeight;
+  const cols=['#1d4ed8','#d97706','#047857','#7c3aed','#dc2626','#0ea5e9','#fbbf24'];
+  const p=Array.from({length:n},()=>({x:Math.random()*c.width,y:-20-Math.random()*100,r:3+Math.random()*5,d:2+Math.random()*3.5,col:cols[(Math.random()*cols.length)|0],ta:Math.random()*Math.PI,ts:.04+Math.random()*.1}));
   let f=0;
-  (function draw(){
-    ctx.clearRect(0,0,c.width,c.height);
-    p.forEach(q=>{q.y+=q.d;q.ta+=q.ts;q.x+=Math.sin(q.ta)*2;
-      ctx.beginPath();ctx.arc(q.x,q.y,q.r,0,7);ctx.fillStyle=q.col;ctx.globalAlpha=.85;ctx.fill();});
-    if(++f<160) requestAnimationFrame(draw);
-    else ctx.clearRect(0,0,c.width,c.height);
-  })();
+  (function draw(){ctx.clearRect(0,0,c.width,c.height);p.forEach(q=>{q.y+=q.d;q.ta+=q.ts;q.x+=Math.sin(q.ta)*2;ctx.beginPath();ctx.arc(q.x,q.y,q.r,0,7);ctx.fillStyle=q.col;ctx.globalAlpha=.9;ctx.fill();});if(++f<160)requestAnimationFrame(draw);else ctx.clearRect(0,0,c.width,c.height);})();
 }
 
 // stars
-(()=>{
-  const s=document.getElementById('stars');
-  for(let i=0;i<80;i++){
-    const el=document.createElement('div'); el.className='star';
-    const sz=Math.random()*2+.8;
-    el.style.cssText=`width:${sz}px;height:${sz}px;left:${Math.random()*100}%;top:${Math.random()*55}%;--d:${2+Math.random()*4}s;--dl:${Math.random()*3}s`;
-    s.appendChild(el);
-  }
-})();
+(()=>{const s=document.getElementById('stars');for(let i=0;i<110;i++){const el=document.createElement('div');el.className='star';const sz=Math.random()*2.2+.5;el.style.cssText=`width:${sz}px;height:${sz}px;left:${Math.random()*100}%;top:${Math.random()*100}%;--d:${2+Math.random()*5}s;--dl:${Math.random()*4}s`;s.appendChild(el);}})();
 
-// auto-refresh every 30s so all browsers stay in sync
-setInterval(loadData, 30000);
+document.addEventListener('DOMContentLoaded',()=>{
+  document.getElementById('obj-input').addEventListener('keydown',e=>{if(e.key==='Enter')setObjective();});
+  document.getElementById('task-input').addEventListener('keydown',e=>{if(e.key==='Enter')addTask();});
+});
+
+setInterval(loadData,30000);
 loadData();
 </script>
 </body>
