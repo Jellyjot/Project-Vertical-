@@ -339,7 +339,7 @@ const ROCKET_POS=[[40,112],[120,74],[200,44],[285,30],[370,54],[430,72],[510,82]
 
 let day=1, saving=false;
 let data=Array.from({length:DAYS},()=>({objective:'',tasks:[]}));
-let SUPABASE_URL='', SUPABASE_KEY='';
+let SUPABASE_URL='https://oziirgoyervymlrinjrg.supabase.co', SUPABASE_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im96aWlyZ295ZXJ2eW1scmluanJnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODEyNDA4OTcsImV4cCI6MjA5NjgxNjg5N30.ii1NSmGJqTB_6nKDnYdIT-Rel0pfABJThTYbpbfELuE';
 
 const hit=d=>d.tasks.length>0&&d.tasks.every(t=>t.done);
 const conquered=()=>data.filter(hit).length;
@@ -563,19 +563,9 @@ function fireConfetti(n){
 
 // ── BOOT ─────────────────────────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded',()=>{
-  // Check if already configured
-  const savedUrl=localStorage.getItem('pv_sb_url');
-  const savedKey=localStorage.getItem('pv_sb_key');
-
-  if(savedUrl&&savedKey){
-    SUPABASE_URL=savedUrl;
-    SUPABASE_KEY=savedKey;
-    showApp();
-    loadData();
-  } else {
-    // Pre-fill if user pastes into setup
-    document.getElementById('setup-panel').style.display='block';
-  }
+  // Credentials hardcoded — go straight to app
+  showApp();
+  loadData();
 
   // Keyboard shortcuts
   document.addEventListener('keydown',e=>{
